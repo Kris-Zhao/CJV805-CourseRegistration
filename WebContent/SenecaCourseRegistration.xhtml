@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+		<title>Seneca Registration online form</title>
+		<h:outputStylesheet name="style.css" library="css"/>
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<h1>Seneca Course Registration</h1>
+			<h:panelGrid columns="3" style="height: 250px; width: 500px;">
+				<h:outputText value="Student ID: "/>
+				<h:inputText id="StudentIDText" required="true" 
+               		requiredMessage="Please enter the student ID"
+               		value="#{processBean.id}"
+               		converterMessage="Please enter digits only."
+               		validatorMessage="Student ID must 9 digits only, and no letter is allowed">
+               		<f:validateLength maximum="9" minimum="9"/>
+            	</h:inputText>
+            	<h:message id="idMessage" for="StudentIDText" styleClass="error"/> 
+            	           	
+            	<h:outputText value="First name: "/>
+				<h:inputText id="FristNameText" required="true"
+               		requiredMessage="Please enter the student first name"
+               		value="#{processBean.firstName}"
+               		validatorMessage="no digits is allowed">
+               		<f:validateRegex pattern="[a-zA-Z]+"/>  		 
+            	</h:inputText>
+            	<h:message id="firstNameMessage" for="FristNameText" styleClass="error"/>
+            	
+            	<h:outputText value="Last name: "/>
+				<h:inputText id="LastNameText" required="true"
+               		requiredMessage="Please enter the student last name"
+               		value="#{processBean.lastName}"
+               		validatorMessage="no digits is allowed"> 
+               		<f:validateRegex pattern="[a-zA-Z]+"/>              		 
+            	</h:inputText>
+            	<h:message id="lastNameMessage" for="LastNameText" styleClass="error"/>
+            	
+            	<h:outputText value="Email: "/>
+				<h:inputText id="EmailText" required="true"
+               		requiredMessage="Please enter a valid e-mail address"
+               		value="#{processBean.email}"
+               		validatorMessage="Invalid e-mail address format">
+               		<f:validateRegex pattern= "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+            	</h:inputText>
+            	<h:message id="emailMessage" for="EmailText" styleClass="error"/>
+            	
+            	
+			</h:panelGrid>
+			
+			<h:panelGrid columns="3" style="height: 50px; width: 500px;">
+				<h:commandButton value="Create new student" action="#{processBean.saveStudent}">
+            		<f:ajax execute="StudentIDText FristNameText LastNameText EmailText"
+               			render=
+               				"idMessage firstNameMessage lastNameMessage emailMessage"/>
+         		</h:commandButton>
+       
+         		<h:commandButton value="Enroll Courses" action="CourseSelection"/>
+
+         		<h:commandButton value="View/Edit student" action="CourseTable"></h:commandButton>
+			</h:panelGrid>
+			
+			
+		</h:form>
+	</h:body>
+	
+</html>

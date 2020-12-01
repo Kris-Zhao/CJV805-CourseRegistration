@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+		<title>Course Selection</title>
+		<h:outputStylesheet name="style.css" library="css"/>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h1>Course Selection</h1>
+			
+			<h:panelGrid columns="2" style="height: 250px; width: 500px;">
+				<h:outputText value="Semester: "/>
+				<h:selectOneMenu id="SemesterSelectOneMenu" required="true"
+            			requiredMessage="Please a semester"
+            			value="#{processBean.selectedSemester}">
+					<f:selectItem itemValue="Fall 2020" itemLabel="Fall 2020"/>
+					<f:selectItem itemValue="Winter 2021" itemLabel="Winter 2021"/>
+				</h:selectOneMenu>
+			
+				<h:outputText value="Course ID: "/>
+				<h:selectOneMenu id="CourseIDSelectOneMenu" required="true"
+            			requiredMessage="Please a course ID"
+            			value="#{processBean.selectedCourseID}">
+					<f:selectItem itemValue="CJV805" itemLabel="CJV805 - Database Connectivity Using Java"/>
+					<f:selectItem itemValue="DBD800" itemLabel="DBD800 - Accessing Big Data"/>
+					<f:selectItem itemValue="SEC835" itemLabel="SEC835 - Security in Databases and Web Applications"/>
+					<f:selectItem itemValue="WTP100" itemLabel="WTP100 - Work Term Preparation"/>
+				</h:selectOneMenu>
+				
+				<h:outputText value="Section: "/>
+				<h:selectOneMenu id="SectionSelectOneMenu" required="true"
+            			requiredMessage="Please a semester"
+            			value="#{processBean.selectedSection}">
+					<f:selectItem itemValue="NAA" itemLabel="NAA"/>
+					<f:selectItem itemValue="NBB" itemLabel="NBB"/>
+				</h:selectOneMenu>
+			</h:panelGrid>
+			<h:commandButton value="Select" action="#{processBean.saveCourseSelection}">
+			</h:commandButton>
+			
+         	<h:commandButton value="Back" action="SenecaCourseRegistration.xhtml"></h:commandButton>
+         	 
+		</h:form>
+		
+	</h:body>
+</html>

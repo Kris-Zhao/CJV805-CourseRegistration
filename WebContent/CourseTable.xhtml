@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+		<title>Course Selection</title>
+		<h:outputStylesheet name="style.css" library="css"/>
+	</h:head>
+	<h:body>
+		<h1>Course Table</h1>
+		<h:dataTable value="#{processBean.registrations}" var="registration"
+			 rowClasses="oddRows,evenRows" headerClass="header"
+         	 styleClass="table" cellpadding="5" cellspacing="0">
+			<h:column>
+				<f:facet name="header">Semester</f:facet>
+				#{(registration.registrationPK).semester}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Course ID</f:facet>
+				#{(registration.registrationPK).courseID}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Course Name</f:facet>
+				 #{registration.courseName}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Course Section</f:facet>
+				#{(registration.registrationPK).section}
+			</h:column>
+			<h:column>
+				<h:form>
+					<h:commandButton value="Drop!" action="#{processBean.deleteOneRegistrationSelection((registration.registrationPK).studentID, (registration.registrationPK).courseID, (registration.registrationPK).semester, (registration.registrationPK).section)}"/>
+				</h:form>				
+					
+			</h:column>
+		</h:dataTable>
+		<br/>
+		<h:form>
+			<h:commandButton value="Back" action="SenecaCourseRegistration.xhtml"></h:commandButton>
+		</h:form>
+		
+	</h:body>
+	
+</html>
