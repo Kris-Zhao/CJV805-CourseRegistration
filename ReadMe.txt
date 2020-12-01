@@ -1,4 +1,4 @@
-CJV805 Assignment 3 ¨C Summer 2020
+CJV805 Assignment 3 Â¨C Summer 2020
 
 Assignment Submission Form
 ==========================================================================
@@ -8,9 +8,7 @@ manually or electronically from any other source (including web sites) or
 distributed to other students.
 
 Group members: Yuhang Zhao (150467199)
-		 	   Sana Golrang (103173209)
-			   Dhavalkumar Manilal Patel (121121180)
-			   
+		 	   	   
 This application is using MySQL database.
 URL: jdbc:mysql://mymysql.senecacollege.ca/db_yzhao248
 MySQL user: db_yzhao248
